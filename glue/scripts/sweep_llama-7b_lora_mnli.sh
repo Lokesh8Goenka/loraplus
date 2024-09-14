@@ -10,7 +10,7 @@ device=0
 # Counter for the total number of tasks started
 count=0
 # Total number of GPUs available
-num_gpus=8  # Adjust based on your actual setup
+num_gpus=1  # Adjust based on your actual setup
 
 # Iterate over learning rates and seeds
 for lr_B in "${lrs_B[@]}"; do
