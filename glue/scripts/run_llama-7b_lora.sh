@@ -21,7 +21,7 @@ python src/run_glue.py \
   --gradient_checkpointing \
   --max_seq_length 128 \
   --gradient_accumulation_steps 4 \
-  --per_device_train_batch_size 8 \
+  --per_device_train_batch_size 4 \
   --per_device_eval_batch_size 1 \
   --max_eval_samples 128 \
   --eval_steps 2 \
