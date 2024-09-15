@@ -2,7 +2,7 @@
 
 # Environment setup
 export TOKENIZERS_PARALLELISM=false
-export CUDA_VISIBLE_DEVICES=0, 1
+export CUDA_VISIBLE_DEVICES=0,1
 
 # Experiment configuration
 task=mnli
@@ -10,9 +10,12 @@ exp_name=llama-7b_lora_$task
 lr=1e-4
 lr_ratio=1
 
+# Number of GPUs
+num_gpus=2
+
 # Execute command
-python src/run_glue.py \
-  --model_name_or_path huggyllama/llama-7b \
+python -m torch.distributed.launch --nproc_per_node=$num_gpus src/run_glue.py \
+  --model_name_or_path /kaggle/input/llama-3.1/transformers/8b/1 \
   --task_name $task \
   --use_lora \
   --target_modules "q_proj, k_proj, v_proj, o_proj, up_proj, down_proj, gate_proj" \
